@@ -53,6 +53,12 @@ public class MainMenu extends Scene{
 				
 			}
 		});
+		
+		exitButton.addListener(new ClickListener() {
+			public void clicked(InputEvent event, float x, float y){
+				Gdx.app.exit();
+			}
+		});
 		table.add(startButton).left().pad(3);
 		table.row();
 		table.add(instructionsButton).pad(3);
