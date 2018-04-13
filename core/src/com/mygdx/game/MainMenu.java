@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 
-public class MainMenu extends Scene{
+public class MainMenu extends Scene {
 	//The stage for the UI elements to be placed on
 	Stage stage;
 	//The table for the buttons
@@ -23,8 +23,8 @@ public class MainMenu extends Scene{
 	TextButton settingsButton;
 	TextButton creditsButton;
 	TextButton exitButton;
-	public MainMenu(int index) {
-		super(index);
+	public MainMenu(int index, GameClass parentGame) {
+		super(index, parentGame);
 		//skin setup
 		skin = new Skin(Gdx.files.internal("commodore/uiskin.json"));
 		
