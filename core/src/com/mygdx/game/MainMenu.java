@@ -11,8 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 
 public class MainMenu extends Scene {
-	//The stage for the UI elements to be placed on
-	Stage stage;
 	//The table for the buttons
 	Table table;
 	//The graphics skin for the UI elements
@@ -27,14 +25,8 @@ public class MainMenu extends Scene {
 		super(index, parentGame);
 		//skin setup
 		skin = new Skin(Gdx.files.internal("commodore/uiskin.json"));
-		
-		//Initialize the stage
-		stage  = new Stage();
 		((OrthographicCamera) stage.getCamera()).zoom = 800f/Gdx.graphics.getWidth();
-		
-		//set the input process to receive input from the stage
 		Gdx.input.setInputProcessor(stage);
-		
 		//setup the table
 		table = new Table();
 		table.setFillParent(true);
@@ -46,13 +38,6 @@ public class MainMenu extends Scene {
 		settingsButton = new TextButton("SETTINGS", skin);
 		creditsButton = new TextButton("CREDITS", skin);
 		exitButton = new TextButton("EXIT", skin);
-		
-		startButton.addListener(new ClickListener(){
-			@Override
-			public void clicked(InputEvent event, float x, float y){
-				
-			}
-		});
 		
 		exitButton.addListener(new ClickListener() {
 			public void clicked(InputEvent event, float x, float y){

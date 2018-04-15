@@ -8,19 +8,22 @@ import com.badlogic.gdx.utils.Array;
 
 public class GameClass extends ApplicationAdapter {
 	MainMenu mainMenu;
-	SplashScreen splashScreen;
-	OrthographicCamera cam;
+	Scene splashScreen;
 	private int currentScene;
 	Array<Scene> scenes;
+	OrthographicCamera cam;
 	@Override
 	public void create() {
 		
 		currentScene = 0;
-		mainMenu = new MainMenu(1, this);
-		cam = (OrthographicCamera) mainMenu.stage.getCamera();
 		
+		splashScreen = new SplashScreen(0, this);
+		mainMenu = new MainMenu(0, this);
 		scenes = new Array<Scene>();
+		scenes.add(splashScreen);
 		scenes.add(mainMenu);
+		System.out.println(scenes.get(1).getClass());
+		cam = (OrthographicCamera) scenes.get(0).stage.getCamera();
 	}
 
 	@Override
@@ -28,11 +31,13 @@ public class GameClass extends ApplicationAdapter {
 		Gdx.gl.glClearColor(66 / 255.0f, 66 / 255.0f, 231 / 255.0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		cam.update();
-		mainMenu.render();
+		scenes.get(currentScene).render();
 	}
 
 	public void sceneChange(int index) {
 		currentScene = index;
+		Gdx.input.setInputProcessor(scenes.get(currentScene).stage);
+		cam = (OrthographicCamera) scenes.get(currentScene).stage.getCamera();
 	}
 
 	@Override

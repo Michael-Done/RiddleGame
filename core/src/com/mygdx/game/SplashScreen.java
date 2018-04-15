@@ -8,21 +8,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 public class SplashScreen extends Scene {
-	// The stage for the UI elements to be placed on
-	Stage stage;
 	// The table for the buttons
 	Table table;
 	// The graphics skin for the UI elements
 	Skin skin;
 	Label title;
-
+	int timer;
 	public SplashScreen(int index, GameClass parentGame) {
 		super(index, parentGame);
+		timer = 0;
 		// skin setup
 		skin = new Skin(Gdx.files.internal("commodore/uiskin.json"));
-
-		// Initialize the stage
-		stage = new Stage();
 		((OrthographicCamera) stage.getCamera()).zoom = 800f / Gdx.graphics.getWidth();
 
 		// set the input process to receive input from the stage
@@ -37,16 +33,23 @@ public class SplashScreen extends Scene {
 		table.add(title);
 		
 		stage.addActor(table);
+		this.nextScene = 1;
 	}
 
 	@Override
 	public void update() {
 		stage.act(Gdx.graphics.getDeltaTime());
+		timer += 1;
+		if(timer == 60*3){
+			this.sceneChange();
+		}
+		
 	}
 
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
+		update();
+		stage.draw();
 
 	}
 
