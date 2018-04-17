@@ -8,7 +8,8 @@ import com.badlogic.gdx.utils.Array;
 
 public class GameClass extends ApplicationAdapter {
 	MainMenu mainMenu;
-	Scene splashScreen;
+	SplashScreen splashScreen;
+	Instructions instructions;
 	private int currentScene;
 	Array<Scene> scenes;
 	OrthographicCamera cam;
@@ -18,11 +19,13 @@ public class GameClass extends ApplicationAdapter {
 		currentScene = 0;
 		
 		splashScreen = new SplashScreen(0, this);
-		mainMenu = new MainMenu(0, this);
+		mainMenu = new MainMenu(1, this);
+		instructions = new Instructions(2, this);
+		
 		scenes = new Array<Scene>();
 		scenes.add(splashScreen);
 		scenes.add(mainMenu);
-		System.out.println(scenes.get(1).getClass());
+		scenes.add(instructions);
 		cam = (OrthographicCamera) scenes.get(0).stage.getCamera();
 	}
 
