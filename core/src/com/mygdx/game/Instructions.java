@@ -29,7 +29,7 @@ public class Instructions extends Scene {
 		// table.setDebug(true);
 
 		instructions = new Label(
-				" Given the end of a story, you \n must ask YES/NO questions to \n determine the full series of \n events leading up to the end.",
+				" Given parts of a story, you \n must ask YES/NO questions to \n determine the full series of \n events leading up to the end.",
 				skin);
 		back = new TextButton("BACK", skin);
 		back.addListener(new ClickListener(){
